@@ -35,6 +35,7 @@ class Item < ApplicationRecord
   def self.create_bearings(name, brand, price_in_cents, description, image_url, open, abec)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
+      type: "bearings",
       bearings_open?: open,
       bearings_abec?: abec,
     )
@@ -43,6 +44,7 @@ class Item < ApplicationRecord
   def self.create_grip_tape(name, brand, price_in_cents, description, image_url, color, length, width)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
+      type: "grip_tape",
       grip_tape_length: length,
       grip_tape_width: width,
     )
