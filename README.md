@@ -1,0 +1,35 @@
+- user
+  - name
+  - email
+  - password_digest
+- cart
+  - 
+- builds
+- 
+- threads
+- reviews
+
+- parts
+  - deck
+    - length
+    - width
+    - material
+    - graphic?
+  - trucks
+    - size in mm
+    - standard_kingpin?
+    - axle width
+    - color
+  - wheels
+    - durometer
+    - size_in_mm
+    - center_cut?
+    - color
+  - bearings
+    - open?
+    - precision?
+    - abec?
+  - grip tape
+    - length
+    - width
+    - color
