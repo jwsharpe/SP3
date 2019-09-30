@@ -1,0 +1,2 @@
+class Truck < Item
+end

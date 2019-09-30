@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   def self.create_deck(name, brand, price_in_cents, description, image_url, length, width, material, mounting_type)
     create(
       name: name, brand: brand, price_in_cents: price_in_cents, description: description, image_url: image_url,
-      type: "deck",
+      type: "Deck",
       deck_length: length,
       deck_width: width,
       deck_material: material,
@@ -13,40 +13,40 @@ class Item < ApplicationRecord
   def self.create_trucks(name, brand, price_in_cents, description, image_url, color, size_in_mm, standard_kingpin, axel_degree)
     create(
       name: name, brand: brand, price_in_cents: price_in_cents, description: description, image_url: image_url,
-      type: "trucks",
+      type: "Truck",
       color: color,
-      trucks_size_in_mm: size_in_mm,
-      trucks_standard_kingpin?: standard_kingpin,
-      trucks_axel_degree: axel_degree,
+      truck_size_in_mm: size_in_mm,
+      truck_standard_kingpin?: standard_kingpin,
+      truck_axel_degree: axel_degree,
     )
   end
 
   def self.create_wheels(name, brand, price_in_cents, description, image_url, color, durometer, size_in_mm, center_cut)
     create(
       name: name, brand: brand, price_in_cents: price_in_cents, description: description, image_url: image_url,
-      type: "wheels",
+      type: "Wheel",
       color: color,
-      wheels_size_in_mm: size_in_mm,
-      wheels_center_cut?: center_cut,
-      wheels_durometer: durometer,
+      wheel_size_in_mm: size_in_mm,
+      wheel_center_cut?: center_cut,
+      wheel_durometer: durometer,
     )
   end
 
   def self.create_bearings(name, brand, price_in_cents, description, image_url, open, abec)
     create(
       name: name, brand: brand, price_in_cents: price_in_cents, description: description, image_url: image_url,
-      type: "bearings",
-      bearings_open?: open,
-      bearings_abec?: abec,
+      type: "Bearing",
+      bearing_open?: open,
+      bearing_abec?: abec,
     )
   end
 
   def self.create_grip_tape(name, brand, price_in_cents, description, image_url, color, length, width)
     create(
       name: name, brand: brand, price_in_cents: price_in_cents, description: description, image_url: image_url,
-      type: "grip_tape",
-      grip_tape_length: length,
-      grip_tape_width: width,
+      type: "Griptape",
+      griptape_length: length,
+      griptape_width: width,
     )
   end
 end

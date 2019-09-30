@@ -1,4 +1,4 @@
-hi <%=@user.name%><br>
+hi <%=@user.name%> - <a href="/logout">logout</a><br>
 <% @items.each do |item|%>
-  <%= content_tag(:p, item.name) %>
+  <%= link_to item.name,item_path(item) %></br>
 <%end%>

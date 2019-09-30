@@ -1,0 +1,2 @@
+class Griptape < Item
+end
