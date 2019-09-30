@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  def self.create_deck(name, brand, type, price_in_cents, description, image_url, length, width, material, mounting_type)
+  def self.create_deck(name, brand, price_in_cents, description, image_url, length, width, material, mounting_type)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
       type: "deck",
@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     )
   end
 
-  def self.create_trucks(name, brand, type, price_in_cents, description, image_url, color, size_in_mm, standard_kingpin, axel_degree)
+  def self.create_trucks(name, brand, price_in_cents, description, image_url, color, size_in_mm, standard_kingpin, axel_degree)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
       type: "trucks",
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
     )
   end
 
-  def self.create_wheels(name, brand, type, price_in_cents, description, image_url, color, durometer, size_in_mm, center_cut)
+  def self.create_wheels(name, brand, price_in_cents, description, image_url, color, durometer, size_in_mm, center_cut)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
       type: "wheels",
@@ -32,7 +32,7 @@ class Item < ApplicationRecord
     )
   end
 
-  def self.create_bearings(name, brand, type, price_in_cents, description, image_url, open, abec)
+  def self.create_bearings(name, brand, price_in_cents, description, image_url, open, abec)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
       bearings_open?: open,
@@ -40,7 +40,7 @@ class Item < ApplicationRecord
     )
   end
 
-  def self.create_grip_tape(name, brand, type, price_in_cents, description, image_url, color, length, width)
+  def self.create_grip_tape(name, brand, price_in_cents, description, image_url, color, length, width)
     create(
       create_default(name, brand, price_in_cents, description, image_url),
       grip_tape_length: length,
