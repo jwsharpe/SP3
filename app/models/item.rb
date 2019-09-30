@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  has_many :carts_items
+  has_many :carts, through: :carts_items
+
   def self.create_deck(name, brand, price_in_cents, description, image_url, length, width, material, mounting_type)
     create(
       name: name, brand: brand, price_in_cents: price_in_cents, description: description, image_url: image_url,

@@ -1,7 +1,11 @@
 body {
   display: flex;
   background: #191919;
-  color: white;
+  color: black;
+  background-image: url("https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.thesurfchannel.com%2Fnewwave%2Fwp-content%2Fuploads%2F2013%2F11%2FHB-PhotoTwoShirtlessRidersDSC0946-650x435.jpeg&f=1&nofb=1");
+  background-size: 220% 100%;
+  background-position: center;
+  background-position-x: -100%;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -9,20 +13,28 @@ body {
   flex-direction: column;
 }
 
+h1 {
+  background: black;
+  color: white;
+}
 a {
   color: gold;
 }
 img {
-  max-width: 60%;
-  max-height: 60%;
-  animation: shake 0.12s;
+  min-width: 70%;
+  opacity: 0.5;
+  border: 50px groove seagreen;
+  border-top-left-radius: 15em;
+  border-bottom-left-radius: 15em;
+  min-height: 40%;
+  animation: shake 0.8s;
   animation-iteration-count: infinite;
 }
 
 @keyframes shake {
   10%,
   90% {
-    transform: translate3d(-1px, 0px, 2px);
+    transform: translate3d(-10px, 0px, 2px);
   }
 
   20%,
@@ -33,7 +45,7 @@ img {
   30%,
   50%,
   70% {
-    transform: translate3d(-4px, -1px, 0);
+    transform: translate3d(10px, 10px, 0);
   }
 
   40%,

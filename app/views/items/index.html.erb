@@ -1,4 +1,4 @@
-hi <%=@user.name%> - <a href="/logout">logout</a><br>
+hi <%=@user.name%> - <a href="/logout">logout</a> - <a href="/cart">cart</a></br>
 <% @items.each do |item|%>
   <%= link_to item.name,item_path(item) %></br>
 <%end%>

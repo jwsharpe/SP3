@@ -10,5 +10,9 @@ Rails.application.routes.draw do
 
   get "items", to: "items#index", as: "items"
   get "items/:id", to: "items#show", as: "item"
+  post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
+
+  get "cart", to: "carts#show", as: "cart"
+  post "cart/clear", to: "carts#delete", as: "clear_cart"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
