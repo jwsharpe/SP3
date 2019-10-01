@@ -1,0 +1,6 @@
+  hi <%=@user.name%> - 
+<a href="/logout">logout</a>
+- <a href=<%=cart_path%>>cart</a> -
+<a href=<%=builds_path%>>public builds</a>
+- <a href=<%=user_builds_path(@user)%>>your builds</a>
+- <a href=<%= items_path%>>items</a> <br>

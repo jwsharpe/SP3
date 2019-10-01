@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  skip_before_action :valid?, only: [:new, :create]
+  skip_before_action :check_no_user, only: [:new, :create]
+  before_action :check_user, except: [:show]
+
+  def show
+    @user = user
+  end
 
   def new
     @user = User.new
@@ -9,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user] = @user.id
-      redirect_to items_path
+      check_user
     else
       flash.now[:message] = @user.errors.full_messages[0]
       render :new

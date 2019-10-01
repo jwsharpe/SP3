@@ -1,15 +1,12 @@
 class SessionsController < ApplicationController
-  skip_before_action :valid?, only: [:index, :login]
+  skip_before_action :check_no_user, only: [:index, :login]
+  before_action :check_user, only: [:index, :login]
 
-  def index 
-    redirect_to items_path if user?
-
-  end
   def login
     user = User.find_by_email(params[:user][:email])
     if user && user.authenticate(params[:user][:password])
       session[:user] = user.id
-      redirect_to items_path
+      check_user
     else
       flash.now[:message] = "Invalid Login Information."
       render :index

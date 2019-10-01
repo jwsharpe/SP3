@@ -2,14 +2,15 @@
   - name
   - email
   - password_digest
+  
 - cart
-  - 
-- builds
-- 
-- threads
-- reviews
 
-- parts
+- builds
+  - name
+  - description
+  
+
+- items
   - deck
     - length
     - width
@@ -33,3 +34,6 @@
     - length
     - width
     - color
+
+- threads
+- reviews

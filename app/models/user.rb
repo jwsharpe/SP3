@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one :cart
   has_many :items, through: :carts
+  has_many :builds
 
   def cart
     user_cart = super

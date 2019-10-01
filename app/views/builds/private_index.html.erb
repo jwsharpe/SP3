@@ -1,0 +1,5 @@
+<%=@user.name%> Builds
+- <a href=<%= new_build_path%>>new build?</a> <br>
+<% @builds.each do |build|%>
+  <%= link_to build.title, build_path(@user.id,build.id)%><br>
+<%end%>
