@@ -1,6 +1,17 @@
-<%= @owner.name%> - 
-<%= @build.title%>
+<%= @owner.name%> - <%= @build.title%> <br>
+parts<br>
+<%@build.items.each do |item|%>
+  <%= item.name%>
+  <% if @build.user_id == @user.id %>
+    - <%= link_to "Remove", delete_item_from_build_path(@build, item), {method: :delete}%>
+  <% end %><br>
+<%end%>
 <% if @build.user_id == @user.id %>
+  <% if @build.public %>
+    <%= button_to "Unpublish", build_path(@owner, @build), {method: :post}%>
+  <% else %>
+    <%= button_to "Publish", build_path(@owner, @build), {method: :post}%>
+  <%end%>
   <%=button_to "Delete", build_path(@owner, @build), {method: :delete}%>
   <%= button_to "Edit", edit_build_path(@build), {method: :get} %>
 <% end%>

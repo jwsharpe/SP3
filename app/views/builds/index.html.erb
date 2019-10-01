@@ -1,4 +1,4 @@
-View All Public Builds
+View All Public Builds<br>
 <% @builds.each do |build|%>
-  <%= link_to build.name, build_path(build)%>
+  <%= link_to build.title, build_path(build.user, build)%> <br>
 <%end%>

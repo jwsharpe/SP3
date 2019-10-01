@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :carts, through: :carts_items
 
   has_many :builds_items
-  has_many :items, through: :builds
+  has_many :items, through: :builds_items
 
   def self.create_deck(name, brand, price_in_cents, description, image_url, length, width, material, mounting_type)
     create(

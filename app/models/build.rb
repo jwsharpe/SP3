@@ -1,6 +1,16 @@
 class Build < ApplicationRecord
   has_many :builds_items
-  has_many :items, through: :builds
+  has_many :items, through: :builds_items
 
-  has_one :user
+  belongs_to :user
+
+  def publish
+    self.public = true
+    self.save
+  end
+
+  def unpublish
+    self.public = false
+    self.save
+  end
 end

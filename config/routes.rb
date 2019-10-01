@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "items", to: "items#index", as: "items"
   get "items/:id", to: "items#show", as: "item"
   post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
+  post "items/:id/add_to_build", to: "items#add_to_build", as: "add_to_build"
 
   get "cart", to: "carts#show", as: "cart"
   post "cart/clear", to: "carts#delete", as: "clear_cart"
@@ -21,8 +22,13 @@ Rails.application.routes.draw do
 
   get "users/:id/:build_id", to: "builds#show", as: "build"
   get "builds/new", to: "builds#new", as: "new_build"
-  get "users/:id/:build_id", to: "builds#edit", as: "edit_build"
+  get "builds/:build_id/edit", to: "builds#edit", as: "edit_build"
+  delete "builds/:build_id/:item_id", to: "builds#remove_item", as: "delete_item_from_build"
+
+  patch "builds/:build_id", to: "builds#update"
   post "builds", to: "builds#create"
+  post "users/:id/:build_id", to: "builds#post"
   delete "users/:id/:build_id", to: "builds#delete"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

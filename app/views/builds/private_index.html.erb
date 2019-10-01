@@ -1,11 +1,10 @@
-hi <%=@user.name%> - 
+user page - 
 <a href="/logout">logout</a>
 - <a href=<%=cart_path%>>cart</a> -
 <a href=<%=builds_path%>>public builds</a>
 - <a href=<%= items_path%>>items</a> - 
 <a href=<%= new_build_path%>>new build?</a> <br>
-ur builds<br>
-git
+<%=@user.name%>'s builds<br>
 <% @builds.each do |build|%>
   <%= link_to build.title, build_path(@user.id,build.id)%><br>
 <%end%>

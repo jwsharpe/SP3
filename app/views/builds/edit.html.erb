@@ -1,8 +1,8 @@
-Create Build
-<%= form_for :build, url: "/builds" do |f|%>
+Edit Build
+<%= form_for @build, url: "/builds/:build_id" do |f|%>
   <%= f.label :title%>
   <%=  f.text_field :title%></br>
 <%= f.label :description%>
 <%= f.text_field :description%></br>
-<%= f.submit :"Create Build"%>
+<%= f.submit :"Edit Build"%>
 <%end%>

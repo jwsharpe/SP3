@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def add_item_to_cart(item)
     CartsItem.create!(cart_id: cart.id, item_id: item.id)
   end
+
+  def add_item_to_build(build, item)
+    BuildsItem.create!(build_id: build.id, item_id: item.id)
+  end
 end

@@ -1,4 +1,8 @@
 <%=button_to "Add to Cart", add_to_cart_path(@item)%>
+<%= form_tag add_to_build_path(@item) do %>
+  <%= collection_select(:build, :id, @user_builds, :id, :title) %>
+  <%= submit_tag :"Add to build"%>
+<%end%>
 Name: <%=  @item.name %></br>
 Brand: <%=  @item.brand %> </br>
 Type: <%=  @item.type%></br>
