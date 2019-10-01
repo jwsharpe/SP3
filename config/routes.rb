@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   get "cart", to: "carts#show", as: "cart"
   post "cart/clear", to: "carts#delete", as: "clear_cart"
 
-  get "users/:id", to: "users#show", as: "user"
+  get "users/:id/", to: "builds#private_index", as: "user"
 
   get "builds", to: "builds#index", as: "builds"
-  get "users/:id/builds/", to: "builds#private_index", as: "user_builds"
+
   get "users/:id/:build_id", to: "builds#show", as: "build"
   get "builds/new", to: "builds#new", as: "new_build"
   get "users/:id/:build_id", to: "builds#edit", as: "edit_build"
