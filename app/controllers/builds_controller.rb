@@ -43,6 +43,17 @@ class BuildsController < ApplicationController
     end
   end
 
+  def update
+    @build = Build.find(params[:build_id])
+
+    if @build.update(build_params)
+      redirect_to build_path(user, @build)
+    else
+      flash.now[:message] = @build.errors.full_messages[0]
+      render new
+    end
+  end
+
   def delete
     build = Build.find(params[:build_id])
     build.destroy

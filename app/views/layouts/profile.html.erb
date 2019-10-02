@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SP3</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="session-wrapper">
+      <div class="session-navbar">
+        <a class="nav-banner" href="/">SP3</a>
+        <a class="nav-action" href=<%= items_path%>>All Items</a>
+        <a class="nav-action" href=<%=builds_path%>>Public Builds</a>
+        <a class="nav-action" href=<%= new_build_path%>>Create Build</a>
+        <a class="nav-action" href=<%=cart_path%>>View Cart</a>
+        <a class="nav-action" href="/logout">Logout</a>
+      </div>
+      <div class="session-main">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

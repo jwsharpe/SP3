@@ -1,8 +1,18 @@
-<%= content_tag(:h4, flash[:message])%>
-<%= form_for :user do |f|%>
-  <%= f.label :email %>
-  <%= f.text_field :email%><br>
-  <%= f.label :password%>
-  <%= f.password_field :password%><br>
-  <%= f.submit :login%>
-<%end%>
+<div class="login-wrapper">
+  <div class="login-picture"></div>
+  <div class="login-form">
+    <h3 class="login-heading mb-4">Welcome Back!</h3>
+    <form action="/login" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="8IwSqS580ezo26KL2xmV3gS3LTTrx88KR5/IVDLopyT3yqW2xVw9q4vNv0xqq1ACku6zWORBsYQTlwFDg/TirQ==">
+      <div class="form-label-group">
+        <input type="email" name="user[email]"  id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      </div>
+      <div class="form-label-group">
+        <input type="password" name="user[password]" id="inputPassword" class="form-control" placeholder="Password" required>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign In</button>
+    </form>
+    <% if flash[:message]%>
+      <%= content_tag(:h4, flash[:message], class: "alert alert-danger")%>
+    <% end%>
+  </div>
+</div>

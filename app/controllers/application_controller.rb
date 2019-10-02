@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :check_no_user
+  layout :layout_by_session
+
+  def layout_by_session
+    user ? "profile" : "application"
+  end
 
   def application
     @user = user

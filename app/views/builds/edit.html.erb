@@ -1,5 +1,5 @@
 Edit Build
-<%= form_for @build, url: "/builds/:build_id" do |f|%>
+<%= form_for @build, url: "/builds/#{@build.id}" do |f|%>
   <%= f.label :title%>
   <%=  f.text_field :title%></br>
 <%= f.label :description%>

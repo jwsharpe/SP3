@@ -1,3 +1,35 @@
 // Place all the styles related to the Static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
+.session-wrapper {
+  display: grid;
+  grid-template-rows: 69px 1fr;
+}
+.session-navbar {
+  display: grid;
+  grid-template-columns: 1fr repeat(5, 100px) 50px;
+  align-items: center;
+  justify-items: center;
+  background: #303f9f;
+  border-bottom: 10px solid #3f51b5;
+
+  .nav-banner {
+    justify-self: left;
+    padding-inline-start: 1em;
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  .nav-action {
+    color: #ffffff;
+  }
+}
+
+.session-main {
+}
+
+.nav-action {
+}
