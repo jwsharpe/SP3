@@ -1,7 +1,7 @@
-<%= @owner.name%> - <%= @build.title%> <br>
+<%= link_to @owner.name, user_path(@owner) %> - <%= @build.title%> <br>
 parts<br>
 <%@build.items.each do |item|%>
-  <%= item.name%>
+  <%= link_to item.name, item_path(item)%>
   <% if @build.user_id == @user.id %>
     - <%= link_to "Remove", delete_item_from_build_path(@build, item), {method: :delete}%>
   <% end %><br>
