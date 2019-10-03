@@ -1,0 +1,26 @@
+// Place all the styles related to the Builds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.new-build-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+
+  .build-image {
+    grid-area: 1 / 1 / span 5 / span 5;
+
+    width: 100%;
+  }
+
+  .build-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    border: 1px transparent solid;
+    background: white;
+    grid-area: 2 / 2 / span 1 / span 1;
+  }
+}
