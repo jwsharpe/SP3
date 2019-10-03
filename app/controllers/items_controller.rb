@@ -2,6 +2,11 @@ class ItemsController < ApplicationController
   def index
     @user = user
     @items = Item.all
+    @item = Item.find(params[:it]) rescue Item.new
+  end
+
+  def post
+    redirect_back fallback_location: items_path
   end
 
   def show

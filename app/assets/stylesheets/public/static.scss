@@ -3,14 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   font-family: "Open Sans", sans-serif !important;
+  background-color: #303f9f !important;
 }
 .session-wrapper {
   display: grid;
-  grid-template-rows: 69px 1fr;
+  grid-template-rows: 69px 1fr 32px;
 }
 .session-navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 69px;
   display: grid;
-  grid-template-columns: 1fr repeat(5, 100px) 50px;
+  grid-template-columns: 1fr repeat(5, auto);
+  grid-gap: 20px;
+  padding-right: 32px;
   align-items: center;
   justify-items: center;
   background: #303f9f;
@@ -29,7 +37,15 @@ body {
 }
 
 .session-main {
+  background: #f7f8ff;
 }
 
-.nav-action {
+.session-footer {
+  display: flex;
+  font-size: 0.742069em;
+  color: white;
+  border-top: 5px solid #aa00ff;
+  padding-right: 16px;
+  justify-content: flex-end;
+  align-items: center;
 }

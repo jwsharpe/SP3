@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .item_image {
-  max-width: 400px;
-  max-height: 400px;
-  animation: shake 0.12s;
+  width: 200px;
+  height: 200px;
+  // animation: shake 0.12s;
   animation-iteration-count: infinite;
 }
 
@@ -29,4 +29,98 @@
   60% {
     transform: translate3d(4px, 0, 0);
   }
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background: #c5cae922;
+
+  .item-index {
+    display: grid;
+    grid-gap: 16px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+
+    grid-template-columns: repeat(auto-fill, 18rem);
+  }
+}
+//      <%= link_to item.name,item_path(item) %></br>
+.item-reference {
+  position: relative;
+  width: 100x;
+  height: 100px;
+  background: transparent;
+  top: -25em;
+}
+
+.item-card-btn {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: none;
+}
+
+.item-card:hover {
+  box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.item-card {
+  display: grid;
+  grid-template-rows: 250px 1fr;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  border: 1px solid #bdbdbdaa;
+
+  border-radius: 0.2em;
+  max-width: 330px;
+  .item-card-image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+  .item-card-body {
+    padding-top: 8px;
+    .item-card-title {
+      color: #212121;
+      font-weight: bold;
+    }
+    .item-card-description {
+      color: #757575;
+    }
+  }
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  position: fixed;
+  top: 96px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  .item-content-title {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-bottom: 4px solid #e040fbaa;
+    border-radius: 4px;
+  }
+  .item-content-description {
+    padding-top: 8px;
+    font-size: 0.8em;
+    color: #757575;
+  }
+}
+
+.item-content-background {
+  background: #c5cae944;
 }

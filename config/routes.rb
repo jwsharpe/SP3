@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "items/:id", to: "items#show", as: "item"
   post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
   post "items/:id/add_to_build", to: "items#add_to_build", as: "add_to_build"
+  post "items", to: "items#post"
 
   get "cart", to: "carts#show", as: "cart"
   post "cart/clear", to: "carts#delete", as: "clear_cart"

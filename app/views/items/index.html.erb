@@ -1,3 +1,43 @@
-<% @items.each do |item|%>
-  <%= link_to item.name,item_path(item) %></br>
-<%end%>
+<div class="item-container">
+  <div class="item-content">
+    <div class="item-content-title">
+      <% if @item.name %>
+        <%= @item.name %>
+      <%else%>
+        Select Item.
+      <%end%>
+    </div>
+    <div style="text-align: center;" class="item-content-description">
+      <b><%=@item.brand%></b>
+    </div>
+    <div class="item-content-description">
+      <%=@item.description%>
+    </div>
+    <div class="item-content-description">
+      <%=@item.type%>
+    </div>
+    <div class="item-content-description">
+      $<%=sprintf('%.2f', @item.price_in_cents/100)%>
+    </div>
+  </div>
+  <div class="item-content-background"></div>
+  <div class="item-index">
+    <% @items.each do |item|%>
+      <form action=#<%=item.id%> method="get">
+        <button style="outline: none" class="item-card-btn" type="submit" name="it" value=<%=item.id%>>
+          <div type=submit class="item-card" style="width: 18rem;">
+            <img src="<%=item.image_url%>" class="item-card-image">
+            <div class="item-card-body">
+              <div class="item-card-title">
+                <span id=<%=item.id%> class="item-reference"></span>
+                <%=item.name%></div>
+              <div class="item-card-description">Type: <%=item.type%></div>
+              <p class="item-card-description">
+                Price: $<%=sprintf('%.2f', item.price_in_cents/100)%></p>
+            </div>
+          </div>
+        </button>
+      </form>
+    <%end%>
+  </div>
+</div>
