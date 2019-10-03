@@ -49,10 +49,10 @@
 //      <%= link_to item.name,item_path(item) %></br>
 .item-reference {
   position: relative;
-  width: 100x;
+  width: 100px;
   height: 100px;
-  background: transparent;
   top: -25em;
+  z-index: 1000000000;
 }
 
 .item-card-btn {
@@ -61,6 +61,10 @@
   border: none;
   overflow: hidden;
   outline: none;
+}
+
+#secondary {
+  background-color: #3f51b5;
 }
 
 .item-card:hover {
@@ -157,3 +161,22 @@
   padding: 4px;
   width: 100%;
 }
+
+.item-search-bar {
+  margin-top: 8px;
+  width: 70%;
+  align-self: center;
+  padding-bottom: 8px;
+  border-radius: 1em;
+  font-size: 0.5em;
+  font-family: "Open Sans", sans-serif !important;
+}
+
+// <%= link_to @owner.name, user_path(@owner) %> - <%= @build.title%> <br>
+// parts<br>
+// <%@build.items.each do |item|%>
+//   <%= link_to item.name, item_path(item)%>
+//   <% if @build.user_id == @user.id %>
+//     - <%= link_to "Remove", delete_item_from_build_path(@build, item), {method: :delete}%>
+//   <% end %><br>
+// <%end%>

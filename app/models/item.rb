@@ -55,4 +55,11 @@ class Item < ApplicationRecord
       griptape_width: width,
     )
   end
+
+  def self.search(query)
+    all.select { |item|
+      item.type.downcase.include?(query.downcase) ||
+      item.name.downcase.include?(query.downcase)
+    }
+  end
 end

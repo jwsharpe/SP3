@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get "items", to: "items#index", as: "items"
   get "items/:id", to: "items#show", as: "item"
   post "items/:id/add_to_cart", to: "items#add_to_cart", as: "add_to_cart"
+  delete "items/:id/remove_from_cart", to: "items#remove_from_cart", as: "remove_item_from_cart"
   post "items/:id/add_to_build", to: "items#add_to_build", as: "add_to_build"
+  post "items/:build_id", to: "items#add_build_to_cart", as: "add_build_to_cart"
   post "items", to: "items#post"
 
   get "cart", to: "carts#show", as: "cart"
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
   get "builds/:build_id/edit", to: "builds#edit", as: "edit_build"
   delete "builds/:build_id/:item_id", to: "builds#remove_item", as: "delete_item_from_build"
 
-  patch "builds/:build_id", to: "builds#update"
+  patch "builds/:build_id", to: "builds#update", as: "update_build"
   post "builds", to: "builds#create"
   post "users/:id/:build_id", to: "builds#post"
   delete "users/:id/:build_id", to: "builds#delete"

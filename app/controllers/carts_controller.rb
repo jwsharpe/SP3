@@ -6,7 +6,7 @@ class CartsController < ApplicationController
 
     @user = user
 
-    @item = Item.find(params[:it]) rescue @items.first
+    @item = Item.find(params[:it]) rescue Item.new
   end
 
   def delete

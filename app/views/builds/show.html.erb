@@ -1,17 +1,63 @@
-<%= link_to @owner.name, user_path(@owner) %> - <%= @build.title%> <br>
-parts<br>
-<%@build.items.each do |item|%>
-  <%= link_to item.name, item_path(item)%>
-  <% if @build.user_id == @user.id %>
-    - <%= link_to "Remove", delete_item_from_build_path(@build, item), {method: :delete}%>
-  <% end %><br>
-<%end%>
-<% if @build.user_id == @user.id %>
-  <% if @build.public %>
-    <%= button_to "Unpublish", build_path(@owner, @build), {method: :post}%>
-  <% else %>
-    <%= button_to "Publish", build_path(@owner, @build), {method: :post}%>
-  <%end%>
-  <%=button_to "Delete", build_path(@owner, @build), {method: :delete}%>
-  <%= button_to "Edit", edit_build_path(@build), {method: :get} %>
-<% end%>
+<div style="min-height: 83vh;" class="item-container">
+  <div class="item-content">
+    <div class="item-content-title">
+      <%=@build.title%>
+    </div>
+    <div style="text-align: center;" class="item-content-description">
+      <b><%=@owner.name %></b>
+    </div>
+    <div class="item-content-description">
+      <%=@build.description %>
+    </div>
+    <% if @item.name %>
+      <div class="item-content-description">
+        <b><%=@item.name %></b>
+      </div>
+      <div class="item-content-description">
+        Type: <%=@item.type %>
+      </div>
+      <div class="item-content-description">
+        Price: $<%=sprintf('%.2f', @item.price_in_cents/100) rescue 0%>
+      </div>
+    <%end%>
+    <div class="item-content-form">
+      <%if @item.name %>
+        <%=button_to "Add Item to Cart", add_to_cart_path(@item), class: "item-content-btn"%>
+      <%end%>
+      <%= button_to "Add Build to Cart", add_build_to_cart_path(@build), class: "item-content-btn"%>
+      <% if @build.user_id == @user.id %>
+        <%= button_to "Edit Build", edit_build_path(@build), {class: "item-content-btn", id: "secondary",method: :get} %>
+        <% if @build.public %>
+          <%= button_to "Unpublish", build_path(@owner, @build), {class: "item-content-btn ", id: "secondary",method: :post}%>
+        <% else %>
+          <%= button_to "Publish", build_path(@owner, @build), {class: "item-content-btn ",id: "secondary", method: :post}%>
+        <%end%>
+        <%=button_to "Delete", build_path(@owner, @build), {class: " item-content-btn ",id: "secondary",  method: :delete}%>
+      <% end%>
+    </div>
+  </div>
+  <div class="item-content-background"></div>
+  <div class="item-index">
+    <% @items.each do |item|%>
+      <form action=#<%=item.id%> method="get">
+        <button style="outline: none" class="item-card-btn " type="submit" name="it" value=<%=item.id%>>
+          <%if @item.id==item.id %>
+            <div type=submit id="item-card-select" class="item-card " style="width: 18rem;">
+            <% else %>
+              <div type=submit class="item-card" style="width: 18rem;">
+              <%end%>
+              <img src="<%=item.image_url%>" class="item-card-image">
+              <div class="item-card-body">
+                <div class="item-card-title">
+                  <span id=<%=item.id%> class="item-reference"></span>
+                  <%=item.name%></div>
+                <div class="item-card-description">Type: <%=item.type%></div>
+                <p class="item-card-description">
+                  Price: $<%=sprintf('%.2f', item.price_in_cents/100) rescue 0%></p>
+              </div>
+            </div>
+          </button>
+        </form>
+      <%end%>
+    </div>
+  </div>

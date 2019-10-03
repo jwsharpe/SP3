@@ -1,17 +1,24 @@
 class BuildsController < ApplicationController
   def index
+    @colors = colors
     @builds = Build.where(public: true).shuffle
   end
 
   def private_index
+    @colors = colors
     @user = User.find(params[:id])
-    @builds = Build.where(user_id: @user.id)
+    @builds = Build.where(user_id: @user.id).shuffle
   end
 
   def show
     @build = Build.find(params[:build_id])
     @owner = User.find(@build.user_id)
     @user = user
+
+    @items = @build.items
+
+    @item = Item.find(params[:it]) rescue Item.new
+    @user_builds = user.builds
   end
 
   def edit
@@ -25,11 +32,11 @@ class BuildsController < ApplicationController
     @build = Build.find(params[:build_id])
     if @build.public
       @build.unpublish
-      redirect_to user_path(user)
     else
       @build.publish
-      redirect_to builds_path
     end
+
+    redirect_to build_path(@build.user, @build)
   end
 
   def create
@@ -69,6 +76,12 @@ class BuildsController < ApplicationController
   end
 
   private
+
+  def colors
+    ["#ef5350", "#ec407a", "#ab47bc", "#7e57c2", "#5c6bc0", "#42a5f5", "#29b6f6", "#26c6da",
+     "#26a69a", "#66bb6a", "#9ccc65", "#d4e157", "#ffee58", "#ffca28", "#ffa726", "#ff7043",
+     "#8d6e63", "#78909c"]
+  end
 
   def build_params
     params.require(:build).permit(:title, :description, :id, :user_id)

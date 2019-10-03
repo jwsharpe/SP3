@@ -1,4 +1,7 @@
 class Build < ApplicationRecord
+  validates :title, presence: true
+  validates :description, presence: true
+
   has_many :builds_items
   has_many :items, through: :builds_items
 

@@ -4,11 +4,14 @@
       <% if @item.name %>
         <%= @item.name %>
       <%else%>
-        Select an item.
+        Select an item.<br>
       <%end%>
     </div>
+    <%=form_tag items_path, method: :get, class: 'item-search-bar' do %>
+      <%= text_field_tag :search, @search, placeholder: "search by name/type", class: "form-control", style: "text-align: center;"%>
+    <%end%>
     <%if @item.name %>
-      <div style="text-align: center;" class="item-content-description">
+      <div class="item-content-description">
         <b><%=@item.brand%></b>
       </div>
       <div class="item-content-description">
@@ -38,10 +41,11 @@
     <% @items.each do |item|%>
       <form action=#<%=item.id%> method="get">
         <button style="outline: none" class="item-card-btn " type="submit" name="it" value=<%=item.id%>>
+          <input type="hidden" name="search" value=<%=@search%>>
           <%if @item.id==item.id %>
-            <div type=submit id="item-card-select" class="item-card " style="width: 18rem;">
+            <div id="item-card-select" class="item-card " style="width: 18rem;">
             <% else %>
-              <div type=submit class="item-card" style="width: 18rem;">
+              <div class="item-card" style="width: 18rem;">
               <%end%>
               <img src="<%=item.image_url%>" class="item-card-image">
               <div class="item-card-body">

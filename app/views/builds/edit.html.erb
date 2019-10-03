@@ -1,11 +1,17 @@
 <div class="new-build-wrapper">
-  <img  class="build-image" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F3d%2F12%2F4d%2F3d124d1c5e615fb03611726a5352acfd.jpg&f=1&nofb=1"/>
-  <div class="build-form">
-    <h4>Edit Build</h4>
-    <%= form_for :build, url: "/builds", html: {class: 'build-form-inner'} do |f|%>
-      <%=  f.text_field :title,{placeholder: "Title", class: "item-content-title:"}%>
-      <%= f.text_field :description, {placeholder: "Description", class: "item-content-description"}%>
-      <%= f.submit :"Edit Build", class: "item-content-btn"%>
-    <%end%>
+  <img  class="build-image" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fdch81km8r5tow.cloudfront.net%2Fwp-content%2Fuploads%2F2017%2F07%2FFA17_Skate_UltraRangePro_LS_11.jpg&f=1&nofb=1"/>
+  <div class="login-form build-form">
+    <h3 class="build-form-title">Edit Build</h3>
+    <form action="/builds/<%=@build.id%>" accept-charset="UTF-8" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="authenticity_token" value="MLgPou1mJV4GiB+DSV21cf7NSm9UQ14M7GrrssBoD0A3/ri9BkbJGWWeAkT473CtaJTUA1vFIIK4YiKlcXRKyQ==">
+      <div class="form-label-group">
+        <input type="text" name="build[title]" id="inputText" value="<%=@build.title%>" class="form-control" placeholder="Title" required autofocus>
+      </div>
+      <div class="form-label-group">
+        <textarea type="textarea" name="build[description]" value=<%=@build.description%> id="inputPassword" class="form-control" placeholder="Description" rows="4'" style="resize:none;" required></textarea>
+      </div>
+      <button class="item-content-btn" type="submit">Edit</button>
+    </form>
   </div>
 </div>

@@ -3,7 +3,7 @@
     <%= content_tag(:h1, "your cart is empty :(")%>
   </div>
 <%else%>
-  <div class="item-container">
+  <div style="min-height: 83vh;" class="item-container">
     <div class="cart-content">
       <div class="cart-content-title">
         Total: $<%=sprintf('%.2f', @total/100)%>
@@ -17,8 +17,11 @@
         </div>
       <%end%>
       <div class="item-content-form">
-        <%= button_to "Buy Immediately", clear_cart_path, class: "item-content-btn"%>
-        <%= button_to "Clear Cart", clear_cart_path, class: "item-content-btn"%>
+        <% if @item.name%>
+          <%= button_to "Remove Item", remove_item_from_cart_path(@item), id: "secondary",class: "item-content-btn", method: :delete%>
+        <% end%>
+        <%= button_to "Clear Cart", clear_cart_path,id: "secondary", class: "item-content-btn"%>
+        <%= button_to "Buy NOW", clear_cart_path,  style: "height: 75px;", class: "item-content-btn"%>
       </div>
     </div>
     <div class="cart-content-background"></div>
