@@ -4,40 +4,57 @@
       <% if @item.name %>
         <%= @item.name %>
       <%else%>
-        Select Item.
+        Select an item.
       <%end%>
     </div>
-    <div style="text-align: center;" class="item-content-description">
-      <b><%=@item.brand%></b>
-    </div>
-    <div class="item-content-description">
-      <%=@item.description%>
-    </div>
-    <div class="item-content-description">
-      <%=@item.type%>
-    </div>
-    <div class="item-content-description">
-      $<%=sprintf('%.2f', @item.price_in_cents/100)%>
-    </div>
+    <%if @item.name %>
+      <div style="text-align: center;" class="item-content-description">
+        <b><%=@item.brand%></b>
+      </div>
+      <div class="item-content-description">
+        <%=@item.description%>
+      </div>
+      <div class="item-content-description">
+        <%=@item.type%>
+      </div>
+      <div class="item-content-description">
+        $<%=sprintf('%.2f', @item.price_in_cents/100)%>
+      </div>
+      <div class="item-content-form">
+        <%=button_to "Add to Cart", add_to_cart_path(@item), class: "item-content-btn"%>
+        <% if @user_builds.empty? %>
+          <%=button_to "Create Build", new_build_path, method: :get, class: "item-content-btn"%>
+        <% else %>
+          <%= form_tag add_to_build_path(@item) do %>
+            <%= submit_tag :"Add to Build",class: "item-content-btn"%><br>
+            <%= collection_select(:build, :id, @user_builds, :id, :title, class: "item-content-selector") %>
+          <%end%>
+        <%end %>
+      </div>
+    <%end%>
   </div>
   <div class="item-content-background"></div>
   <div class="item-index">
     <% @items.each do |item|%>
       <form action=#<%=item.id%> method="get">
-        <button style="outline: none" class="item-card-btn" type="submit" name="it" value=<%=item.id%>>
-          <div type=submit class="item-card" style="width: 18rem;">
-            <img src="<%=item.image_url%>" class="item-card-image">
-            <div class="item-card-body">
-              <div class="item-card-title">
-                <span id=<%=item.id%> class="item-reference"></span>
-                <%=item.name%></div>
-              <div class="item-card-description">Type: <%=item.type%></div>
-              <p class="item-card-description">
-                Price: $<%=sprintf('%.2f', item.price_in_cents/100)%></p>
+        <button style="outline: none" class="item-card-btn " type="submit" name="it" value=<%=item.id%>>
+          <%if @item.id==item.id %>
+            <div type=submit id="item-card-select" class="item-card " style="width: 18rem;">
+            <% else %>
+              <div type=submit class="item-card" style="width: 18rem;">
+              <%end%>
+              <img src="<%=item.image_url%>" class="item-card-image">
+              <div class="item-card-body">
+                <div class="item-card-title">
+                  <span id=<%=item.id%> class="item-reference"></span>
+                  <%=item.name%></div>
+                <div class="item-card-description">Type: <%=item.type%></div>
+                <p class="item-card-description">
+                  Price: $<%=sprintf('%.2f', item.price_in_cents/100)%></p>
+              </div>
             </div>
-          </div>
-        </button>
-      </form>
-    <%end%>
+          </button>
+        </form>
+      <%end%>
+    </div>
   </div>
-</div>

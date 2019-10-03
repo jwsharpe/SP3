@@ -2,17 +2,13 @@ class ItemsController < ApplicationController
   def index
     @user = user
     @items = Item.all
+
     @item = Item.find(params[:it]) rescue Item.new
+    @user_builds = user.builds
   end
 
   def post
     redirect_back fallback_location: items_path
-  end
-
-  def show
-    @item = item
-    @user = user
-    @user_builds = user.builds
   end
 
   def add_to_cart
