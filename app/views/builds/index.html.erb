@@ -1,4 +1,12 @@
-View All Public Builds<br>
-<% @builds.each do |build|%>
-  <%= link_to build.title, build_path(build.user, build)%> <br>
-<%end%>
+<div class= "builds-wrapper">
+  <h1>Public Builds</h1>
+  <div class="builds-content">
+    <% @builds.each do |build|%>
+      <div class="builds-card">
+        <%= content_tag(:span, build.title, class:"builds-title") %>
+        <%= content_tag(:span, build.description,class:"builds-description") %>
+        <%= content_tag(:span, build.user.name, class:"builds-author")%>
+      </div>
+    <%end%>
+  </div>
+</div>

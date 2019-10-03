@@ -50,7 +50,7 @@
                   <%=item.name%></div>
                 <div class="item-card-description">Type: <%=item.type%></div>
                 <p class="item-card-description">
-                  Price: $<%=sprintf('%.2f', item.price_in_cents/100)%></p>
+                  Price: $<%=sprintf('%.2f', item.price_in_cents/100) rescue 0%></p>
               </div>
             </div>
           </button>

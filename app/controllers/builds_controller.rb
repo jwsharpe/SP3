@@ -1,6 +1,6 @@
 class BuildsController < ApplicationController
   def index
-    @builds = Build.where(public: true)
+    @builds = Build.where(public: true).shuffle
   end
 
   def private_index

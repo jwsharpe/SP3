@@ -1,4 +1,50 @@
-<% @items.each do |item| %>
-  <%= item.name%> </br>
-<% end%>
-<%= button_to "Clear Cart", clear_cart_path%>
+<%if @items.empty? %>
+  <div class="empty-cart">
+    <%= content_tag(:h1, "your cart is empty :(")%>
+  </div>
+<%else%>
+  <div class="item-container">
+    <div class="cart-content">
+      <div class="cart-content-title">
+        Total: $<%=sprintf('%.2f', @total/100)%>
+      </div>
+      <div style="text-align: center;" class="item-content-description">
+        <b>Cart</b>
+      </div>
+      <%if @item.name %>
+        <div class="item-content-description">
+          <%=@item.description%>
+        </div>
+      <%end%>
+      <div class="item-content-form">
+        <%= button_to "Buy Immediately", clear_cart_path, class: "item-content-btn"%>
+        <%= button_to "Clear Cart", clear_cart_path, class: "item-content-btn"%>
+      </div>
+    </div>
+    <div class="cart-content-background"></div>
+    <div class="item-index">
+      <% @items.each do |item|%>
+        <form action=#<%=item.id%> method="get">
+          <button style="outline: none" class="item-card-btn " type="submit" name="it" value=<%=item.id%>>
+            <%if @item.id==item.id %>
+              <div type=submit id="item-card-select" class="item-card " style="width: 18rem;">
+              <% else %>
+                <div type=submit class="item-card" style="width: 18rem;">
+                <%end%>
+                <img src="<%=item.image_url%>" class="item-card-image">
+                <div class="item-card-body">
+                  <div class="item-card-title">
+                    <span id=<%=item.id%> class="item-reference"></span>
+                    <%=item.name%></div>
+                  <div class="item-card-description">Type: <%=item.type%></div>
+                  <p class="item-card-description">
+                    Price: $<%=sprintf('%.2f', item.price_in_cents/100) rescue 0%>
+                  </p>
+                </div>
+              </div>
+            </button>
+          </form>
+        <%end%>
+      </div>
+    </div>
+  <%end%>

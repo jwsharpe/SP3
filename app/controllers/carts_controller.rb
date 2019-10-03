@@ -1,6 +1,12 @@
 class CartsController < ApplicationController
   def show
     @items = user.cart.items
+
+    @total = @items.sum(&:price_in_cents) rescue 0
+
+    @user = user
+
+    @item = Item.find(params[:it]) rescue @items.first
   end
 
   def delete
